@@ -1,4 +1,4 @@
-import { ITree, INode } from "../interface/ITree";
+import { ITree, INode, G6TreeData } from "../interface/ITree";
 import { IHuffmanData } from "../interface/IHuffmanData";
 class HuffmanNode implements INode<IHuffmanData>{
     left: INode<IHuffmanData> = null;
@@ -18,7 +18,18 @@ class HuffmanTree implements ITree<IHuffmanData>{
     }
     destroy(){
         delete this._root;
-    };
+    }
+    equal(other:HuffmanTree){
+        const dic = this.dictionary;
+        const dicFromOther = other.dictionary;
+        dic.forEach((val:string,key:string)=>{
+            const v = dicFromOther.get(key);
+            if(v === undefined || v !== val){
+                return false;
+            }
+        });
+        return true;
+    }
     get root(){
         return this._root;
     }
@@ -29,13 +40,19 @@ class HuffmanTree implements ITree<IHuffmanData>{
         })
         return res;
     }
-    get G6TreeData(){
+    get G6TreeData():G6TreeData{
         const transfer =(root:HuffmanNode):{id:string,children:Array<any>,label:string}=>{
             if(root === null){
                 return null
             }
             const left = transfer(root.left);
             const right = transfer(root.right);
+            const res:G6TreeData = {
+                id: root.data.code.reduce((acc,cur)=>acc+cur.toString(),''),
+                label: root.data.ch === null?undefined:root.data.ch,
+                style:{},
+                children:[]
+            };
             const children = [];
             if(left!==null){
                 children.push(left);
@@ -43,26 +60,19 @@ class HuffmanTree implements ITree<IHuffmanData>{
             if(right!=null){
                 children.push(right);
             }
-            return{
-                id: root.data.ch,
-                label: root.data.ch === null?undefined:root.data.ch,
-                children:children
+            if(left===null && right ===null){
+                res.style = {
+                    fill:'red'
+                }
             }
+            res.children = children;
+            return res;
         }
         return transfer(this._root);
     }
-    static generateFrom(inputString: string){
+    static generateFromString(inputString: string){
         const freqs = new Map<string,number>();
         const chArr = Array.from(inputString);
-        const leafs:Array<HuffmanNode> = [];
-        const updateCodeForAllNodes =(root:HuffmanNode,digit:0|1)=>{
-            if(root == null){
-                return;
-            }
-            root.data.code.push(digit);
-            updateCodeForAllNodes(root.left,digit);
-            updateCodeForAllNodes(root.right,digit);
-        }
         chArr.forEach(
             (ch:string)=>{
                 if(freqs.get(ch)){
@@ -73,6 +83,18 @@ class HuffmanTree implements ITree<IHuffmanData>{
                 }
             }
         )
+        return this.generateFromGivenData(freqs);
+    }
+    static generateFromGivenData(freqs:Map<string,number>){
+        let leafs:Array<HuffmanNode> = [];
+        const updateCodeForAllNodes =(root:HuffmanNode,digit:0|1)=>{
+            if(root == null){
+                return;
+            }
+            root.data.code.unshift(digit);
+            updateCodeForAllNodes(root.left,digit);
+            updateCodeForAllNodes(root.right,digit);
+        }
         freqs.forEach((val,key)=>{
             leafs.push(new HuffmanNode(key,val));
         })
@@ -96,8 +118,36 @@ class HuffmanTree implements ITree<IHuffmanData>{
         }
         return new HuffmanTree(temp[0],leafs);
     }
-    translate(inputString:string):string{
+    encrypt(inputString:string):string{
        return Array.from(inputString).map((ch)=>this.dictionary.get(ch)).reduce((acc,cur)=>acc+cur.toString(),'');
+    }
+    decrypt(codeArr:(0|1)[]):{ res:string, stopAtCode:string}{
+        const res:string[] = [];
+        let stopAtCode = '';
+        let index = 0;
+        const findLeaf = (p:HuffmanNode) =>{
+            if(p.right === null && p.left === null){
+                res.push(p.data.ch);
+                if(index === codeArr.length){
+                    stopAtCode = p.data.code.reduce((acc,cur)=>acc+cur.toString(),'');
+                    return;
+                }else{
+                    findLeaf(this._root);
+                }
+                return;
+            }
+            if(index >= codeArr.length){
+                stopAtCode = p.data.code.reduce((acc,cur)=>acc+cur.toString(),'');
+                return;
+            }
+            if(codeArr[index++] === 0){
+                findLeaf(p.left);
+            }else{
+                findLeaf(p.right);
+            }
+        }
+        findLeaf(this._root);
+        return { res:res.reduce((pre,cur)=>pre+cur.toString(),''), stopAtCode:stopAtCode };
     }
 }
 export { HuffmanTree, HuffmanNode }

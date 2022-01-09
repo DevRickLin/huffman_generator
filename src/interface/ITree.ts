@@ -7,4 +7,10 @@ interface ITree<T>{
     root:INode<T>
     destroy:()=>void
 }
-export { ITree, INode }
+interface G6TreeData{
+    id: string;
+    children: G6TreeData[];
+    label: string;
+    style?:{};
+}
+export { ITree, INode, G6TreeData }
