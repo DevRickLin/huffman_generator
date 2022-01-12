@@ -1,5 +1,5 @@
-# TypeScript + React + tailwindcss + webpack
-This is seted to develop any single page application. If you want to make an app which base on typescirpt, react, tailwindcss and webpack without react-create-app, using this might be a good way to learn how to set up all things by yourself.
+# 哈夫曼樹生成器
+    這是一個簡單的哈夫曼樹生成器，基於React以及G6圖引擎開發。致力於讓每個初學者能夠有一個生動的示範網站讓他們理解哈夫曼樹譯碼的運作過程。
 ## Usage
 1. install dependencies
 ```
@@ -7,5 +7,6 @@ $npm i
 ```
 2. run it
 ```
+$npm run watch:css
 $npm run serve
 ```
