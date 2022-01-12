@@ -1,5 +1,6 @@
 # 哈夫曼樹生成器
-    這是一個簡單的哈夫曼樹生成器，基於React以及G6圖引擎開發。致力於讓每個初學者能夠有一個生動的示範網站讓他們理解哈夫曼樹譯碼的運作過程。
+這是一個簡單的哈夫曼樹生成器，基於React以及G6圖引擎開發。致力於讓每個初學者能夠有一個生動的示範網站讓他們理解哈夫曼樹譯碼的運作過程。
+![demo](https://github.com/DevRickLin/Huffman/blob/master/public/demo.png?raw=true)
 ## Usage
 1. install dependencies
 ```
