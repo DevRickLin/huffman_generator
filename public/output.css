@@ -502,6 +502,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 }
 
+.m-10 {
+  margin: 2.5rem;
+}
+
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
 .flex {
   display: flex;
 }
@@ -510,16 +518,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100%;
 }
 
-.h-40 {
-  height: 10rem;
-}
-
 .h-1\/3 {
   height: 33.333333%;
 }
 
-.h-2\/3 {
-  height: 66.666667%;
+.h-40 {
+  height: 10rem;
 }
 
 .w-full {
@@ -530,6 +534,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 50%;
 }
 
+.max-w-md {
+  max-width: 28rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
@@ -538,8 +550,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   resize: none;
 }
 
-.resize {
-  resize: both;
+.list-inside {
+  list-style-position: inside;
+}
+
+.list-decimal {
+  list-style-type: decimal;
+}
+
+.appearance-none {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .flex-row {
@@ -550,23 +572,143 @@ Ensure the default browser behavior of the `hidden` attribute.
   flex-direction: column;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.bg-zinc-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(212 212 216 / var(--tw-bg-opacity));
+}
+
+.bg-slate-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-zinc-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 244 245 / var(--tw-bg-opacity));
+}
+
 .p-5 {
   padding: 1.25rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .pl-5 {
   padding-left: 1.25rem;
 }
 
-.text-justify {
-  text-align: justify;
+.font-noto-sans-sc {
+  font-family: "Noto Sans SC", sans-serif;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
-.font-bold {
-  font-weight: 700;
+.text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.placeholder-gray-400::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-placeholder-opacity));
+}
+
+.placeholder-gray-400:-ms-input-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-placeholder-opacity));
+}
+
+.placeholder-gray-400::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-placeholder-opacity));
+}
+
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.focus\:border-transparent:focus {
+  border-color: transparent;
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus\:ring-2:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus\:ring-purple-600:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(147 51 234 / var(--tw-ring-opacity));
+}
+
+@media (min-width: 640px) {
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
 }

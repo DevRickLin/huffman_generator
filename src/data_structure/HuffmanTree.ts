@@ -49,7 +49,7 @@ class HuffmanTree implements ITree<IHuffmanData>{
             const right = transfer(root.right);
             const res:G6TreeData = {
                 id: root.data.code.reduce((acc,cur)=>acc+cur.toString(),''),
-                label: root.data.ch === null?undefined:root.data.ch,
+                label: root.data.ch === ''?root.data.freq.toString():root.data.ch,
                 style:{},
                 children:[]
             };

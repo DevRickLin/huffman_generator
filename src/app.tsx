@@ -41,12 +41,12 @@ class App extends React.Component<null,IAppState>{
         return (
             <div className="flex flex-col w-full h-full">
                 <div className="flex flex-row w-full flex-grow">
-                    <div className="flex flex-col w-1/2 h-full">
+                    <div className="flex flex-col max-w-md m-10 px-4 py-8 bg-zinc-100 rounded-lg shadow sm:px-6 md:px-8 lg:px-10">
                         <div className="w-full h-1/3">
-                            <Input inputString={this.state.sourceString} label="源文件" onChange={(e:ChangeEvent<HTMLInputElement>)=>this.updateInputString(e.target.value)}/>
+                            <Input inputString={this.state.sourceString} label="源文本" onChange={(e:ChangeEvent<HTMLTextAreaElement>)=>this.updateInputString(e.target.value)}/>
                         </div>
                         <div className="w-full h-1/3">
-                            <Input inputString={this.state.codedString} label="输入编码" onChange={(e:ChangeEvent<HTMLInputElement>)=>this.updateCodedString(e.target.value)}/>
+                            <Input inputString={this.state.codedString} label="输入编码" onChange={(e:ChangeEvent<HTMLTextAreaElement>)=>this.updateCodedString(e.target.value)}/>
                         </div>
                         <div className="w-full h-1/3">
                             <Output outputString={this.state.outputString} label="输出译码"/>
